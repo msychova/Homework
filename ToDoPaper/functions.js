@@ -1,19 +1,19 @@
-var todoItem = {
+let todoItem = {
 	text: 'Default',
 	completed: false,
 	id: 0
 };
 
-var itemsType = 'not_completed';
-var todoItemId = 0;
-var newText = 'text';
+let itemsType = 'not_completed';
+let todoItemId = 0;
+let newText = 'text';
 
 
 function addTodoItem(todoItem) {
-	if (todoItem.text && todoItem.completed && todoItem.id.unique){
+	if (todoItem.text && todoItem.completed){
 		this.text = text;
 		this.completed = completed;
-		this.id = id;
+		this.id ++;
 		return true;
 	}
 }
@@ -21,19 +21,13 @@ function addTodoItem(todoItem) {
 function viewTodoList(itemsType) {
 	if (itemsType == 'completed'){
 		
-		todoItem.forEach(function(type){
-			if (todoItem.completed == true){
-				return todoItem;
-			}
-		})
+		todoItem.filter = (type) => todoItem.completed == true;
+		return todoItem;
 	}
 	if (itemsType == 'not_completed'){
 		
-		todoItem.forEach(function(type){
-			if (todoItem.completed != true){
-				return todoItem;
-			}
-		})
+		todoItem.filter = (type) => todoItem.completed != true;
+		return todoItem;
 		
 	}
 	if (itemsType == 'all'){
