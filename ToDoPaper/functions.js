@@ -69,7 +69,14 @@ function editTodoItem(todoItemId, newText) {
 			todoItem.text = newText;
 			return true;
 		}
+		
+		ToDoHistory.push({
+			date: (new Date()).toISOString(),
+			text: todoItem.text,
+			completed: todoItem.completed
+		});
 	}
+	
 }
 function deleteTodoItem(todoItemId) {
 	if (todoItem.id === todoItemId){
