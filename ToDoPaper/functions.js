@@ -1,24 +1,52 @@
-let todoItem = {
+/*let todoItem = {
 	text: 'Default',
 	completed: false,
 	id: 0
-};
+};*/
 
 let itemsType = 'not_completed';
 let todoItemId = 0;
 let newText = 'text';
 
-
-function addTodoItem(todoItem) {
-	if (todoItem.text && todoItem.completed){
-		this.text = text;
-		this.completed = completed;
-		this.id ++;
-		return true;
+function ToDoItem(todoItem){
+	
+	var ToDoHistory = [];
+	
+	var initToDoHistory = function() {
+		$.getJSON( "history.json", function(data) {
+			console.log(data);	
+			ToDoHistory = data.data;
+		});
+	};
+	
+	initToDoHistory();
+	
+	function todoItem (text,completed){
+		text = 'Default';
+		completed = false;
+		id = 0;
 	}
-}
 
-function viewTodoList(itemsType) {
+	this.addTodoItem = function(text,completed) {
+		if (text != null && completed != null){
+			let newItem = new todoItem(text,completed);
+								
+		}
+		
+		ToDoHistory.push({
+			date: (new Date()).toISOString(),
+			text: newItem.text,
+			completed: newItem.completed
+		});
+
+		console.log(ToDoHistory);
+		
+		return newItem;	
+
+
+	};
+
+	this.viewTodoList = function(itemsType) {
 	if (itemsType == 'completed'){
 		
 		todoItem.filter = (type) => todoItem.completed == true;
@@ -33,7 +61,7 @@ function viewTodoList(itemsType) {
 	if (itemsType == 'all'){
 		return todoItem;
 	}
-}
+};
 
 function editTodoItem(todoItemId, newText) {
 	if(newText){
@@ -54,3 +82,6 @@ function completeTodoItem(todoItemId) {
 		todoItem.completed = true;
 	}
 }
+}
+
+var todoitem = new ToDoItem();
