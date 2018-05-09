@@ -12,7 +12,6 @@ function DOM(){
 		param = `<div>${JSON.stringify(todoItem.id)}.${JSON.stringify(todoItem.text)} <input type="checkbox" name="ToDoItem" value="completed" checked></div>`; 
 		
 		ListDiv.innerHTML += param;
-		// document.body.innerHTML = ListDiv;
 		
 		console.log(ListDiv);
 	}
